@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>simpleGame</title>
+</head>
+<script src="js/pixi.js"></script>
+
+<body>
+
+    <div class="container">
+        <div class="info">
+            <p class="notation notationNumber">Number of current shapes:<span id="NumberOfShapes">0</span></p>
+            <p class="notation notationArea">Surface area occupied by shapes:<span id="surfaceArea">0</span>px<sup>2</sup></p>
+        </div>
+        <div id="showPixi"></div>
+        <div class="variations">
+            <button class="btnMinus btnMinusNumber"><svg xmlns="http://www.w3.org/2000/svg" class="plus" width="20" height="20" viewBox="0 0 160 160">
+                <rect class="horizontal-line" y="70" width="160" height="20"/>
+            </svg></button>
+            <button class="btnPlus btnPlusNumber"><svg xmlns="http://www.w3.org/2000/svg" class="plus" width="20" height="20" viewBox="0 0 160 160">
+                    <rect class="vertical-line" x="70" width="20" height="160"/>
+                    <rect class="horizontal-line" y="70" width="160" height="20"/>
+                </svg>
+                </button>
+                
+                    <p class="notation notationNumberShapesPesSec">Number of shapes per sec: <span id="NumberShapesPesSec">0</span></p>
+                    <button class="btnMinus btnMinusGravity"><svg xmlns="http://www.w3.org/2000/svg" class="plus" width="20" height="20" viewBox="0 0 160 160">
+                        <rect class="horizontal-line" y="70" width="160" height="20"/>
+                    </svg></button>
+                    <button class="btnPlus btnPlusGravity"><svg xmlns="http://www.w3.org/2000/svg" class="plus" width="20" height="20" viewBox="0 0 160 160">
+                            <rect class="vertical-line" x="70" width="20" height="160"/>
+                            <rect class="horizontal-line" y="70" width="160" height="20"/>
+                        </svg>
+                        </button>
+                    
+                    <p class="notation notationGravityValue">Gravity value:<span id="GravityValue">0</span></p></p>
+                
+        </div>
+    </div>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>
