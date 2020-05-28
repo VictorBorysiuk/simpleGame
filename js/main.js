@@ -1,6 +1,5 @@
 const width = 800;
 const height = 450;
-const length =width*height;
 
 const appOptions = {  
   width: width,
@@ -11,25 +10,25 @@ const appOptions = {
   backgroundColor: 0xdbe4c5,
 };
 
-var app; 
-var colors = [0xFFFF0B, 0xFF700B, 0x4286f4, 0x4286f4, 0xf441e8, 0x8dff6d, 0x41ccc9, 0xe03375, 0x95e032, 0x77c687, 0x43ba5b, 0x0ea3ba]; //массив цветов
-var gravity = 4;
-var figuresAmount = 0; //количество созданных фигур
-var figure = []; //массив хранящий нашу фигуру
-var NumberOfShapesPesSec = 1;
+const app; 
+const colors = [0xFFFF0B, 0xFF700B, 0x4286f4, 0x4286f4, 0xf441e8, 0x8dff6d, 0x41ccc9, 0xe03375, 0x95e032, 0x77c687, 0x43ba5b, 0x0ea3ba]; //массив цветов
+const gravity = 4;
+const figuresAmount = 0; //количество созданных фигур
+const figure = []; //массив хранящий нашу фигуру
+let NumberOfShapesPesSec = 1;
 
 document.getElementById("GravityValue").innerHTML = gravity;
 document.getElementById("NumberShapesPesSec").innerHTML = NumberOfShapesPesSec;
 
 
-var model = {
+const model = {
     createCanvas: function() {
         app = new PIXI.Application(appOptions); //создае холст
         document.getElementById("showPixi").appendChild(app.view); //выводим его в тело страницы 
     },
 
     requestInterval: function (fn, delay) {
-        var requestAnimFrame = (function () {
+        let requestAnimFrame = (function () {
           return window.requestAnimationFrame || function (callback) {
             window.setInterval(callback, 1000);
           };
@@ -38,7 +37,7 @@ var model = {
         handle = {};
         function loop() {
           handle.value = requestAnimFrame(loop);
-          var current = new Date().getTime(),
+          let current = new Date().getTime(),
           delta = current - start;
           if (delta >= delay) {
             fn.call();
@@ -53,15 +52,15 @@ var model = {
         let areaShapes = 0;
         
         rand = Math.floor(Math.random() * colors.length);
-        var inAreaX = width - 100; 
-        var shapesY = y || -100; 
-        var shapesX = x || Math.floor(Math.random() * inAreaX);
+        const inAreaX = width - 100; 
+        const shapesY = y || -100; 
+        const shapesX = x || Math.floor(Math.random() * inAreaX);
 
-        var shapes = new PIXI.Graphics(); //создаем новый графический элемент
+        const shapes = new PIXI.Graphics(); //создаем новый графический элемент
 
         shapes.beginFill(colors[rand], 1);
-        let diffrendShapes = ['Triangle','Rect', 'Pentagon', 'Hexagon', 'Circle', 'Ellipse', 'Random'];
-        let randShapes = controller.randomRange(0, diffrendShapes.length);//Math.floor(Math.random() * diffrendShapes.length);
+        const diffrendShapes = ['Triangle','Rect', 'Pentagon', 'Hexagon', 'Circle', 'Ellipse', 'Random'];
+        const randShapes = controller.randomRange(0, diffrendShapes.length);//Math.floor(Math.random() * diffrendShapes.length);
         let type = diffrendShapes[randShapes];
         switch (type) {
             case 'Triangle':
@@ -91,7 +90,7 @@ var model = {
                 shapes.drawPolygon(pathHexagon);
                 break;
             case 'Circle':
-                var radius = controller.randomRange(30, 50); //радиус круга
+                const radius = controller.randomRange(30, 50); //радиус круга
                 shapes.drawCircle(shapesX, shapesY, radius); //рисуем круг
                 break;
             case 'Ellipse':
@@ -119,7 +118,7 @@ var model = {
                 
     }
 }
-var view = {
+const view = {
     loadGame: function() {
         model.createCanvas();
 
@@ -133,7 +132,7 @@ var view = {
 
         app.ticker.add(function() { //постоянное обновление холста
             
-            for (var i = 0; i < figuresAmount; i++) {
+            for (let i = 0; i < figuresAmount; i++) {
                 figure[i].position.y += gravity; 
                 if (figure[i].position.y > (height+110) && figure[i].live == true) {
                     figure[i].clear();
@@ -149,7 +148,7 @@ var view = {
 }
 
 
-var controller = {
+const controller = {
     clearFigure: function() {
         figure.filter(i => i.type === this.type).map(i => i.tint = colors[Math.floor(Math.random() * colors.length)]);
         figure[this.num].live = false;
